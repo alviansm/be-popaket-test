@@ -1,0 +1,285 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Popaket API - test",
+    "description": "Courier and user auth API for popaket-test. Use `insomnia` or `postman` to test the available API. Add token to headers with `Authorization` as ket and insert the token as  value. Token will be returned when the user `/auth/signin`. To `authorize` in the header, insert the full value of the token, e.g. `JWT token`.",
+    "version": "0.1.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api/logistic": {
+      "post": {
+        "summary": "Creates a new courier.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "api"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Logistic",
+            "description": "The courier to add.",
+            "schema": {
+              "$ref": "#/definitions/Logistic"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created"
+          }
+        }
+      },
+      "get": {
+        "summary": "Return all available courier.",
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "tags": [
+          "api"
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Logistic"
+            }
+          }
+        }
+      }
+    },
+    "/api/shipping": {
+      "post": {
+        "summary": "Return available shipping based on 2 parameter.",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Logistic",
+            "description": "The courier to find.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "origin_name",
+                "destination_name"
+              ],
+              "properties": {
+                "origin_name": {
+                  "type": "string"
+                },
+                "destination_name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "api"
+        ],
+        "responses": {
+          "200": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Logistic"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "summary": "Sign up a new user.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "auth"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Logistic",
+            "description": "The courier to add.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "summary": "Sign in an get JWT for headers.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "auth"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Logistic",
+            "description": "The courier to add.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "username",
+                "password"
+              ],
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Will return token (JWT token)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "jwt": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signout": {
+      "post": {
+        "summary": "Sign out an remove JWT for headers.",
+        "consumes": [
+          "application/json"
+        ],
+        "tags": [
+          "auth"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Will remove token from headers"
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "post": {
+        "summary": "Return private claim for the current user in the browser.",
+        "consumes": [
+          "application/json"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "tags": [
+          "auth"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Logistic",
+            "description": "Return private claim.",
+            "schema": {
+              "type": "object",
+              "required": [
+                "jwt"
+              ],
+              "properties": {
+                "jwt": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Will return private claim",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Logistic": {
+      "properties": {
+        "logistic_name": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "destination_name": {
+          "type": "string"
+        },
+        "origin_name": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "msisdn": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "jwt"
+    }
+  }
+}
