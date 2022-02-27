@@ -26,7 +26,8 @@ MONGO_URI is the URI for the database (MONGO), SECRET_KET is the session secret 
 ## My Default API - Endpoint
 ### Authentication -> METHOD -> Parameter -> Response
 - `/auth/signup` -> POST -> takes 4 JSON parameter (username, name, password, msisdn) -> regiter user to the database
-- `auth/login` -> -> takes 2 JSON parameter (username, password) -> return jwt
+- `/auth/login` -> POST -> takes 2 JSON parameter (username, password) -> return jwt
+- `/auth/me` -> GET -> jwt -> return private claims
 
 ### Logistics -> METHOD -> Parameter -> Response
 - `/api/logistics` -> GET -> null -> Index all available logistics options
