@@ -11,7 +11,7 @@ Progress
 - [Nodejs](https://nodejs.org/en/)
 
 ## Project Setup
-- `touch .env` in teh project directory, or manually create `.env` file. There are 2 variable in this in env: SECRET_KEY and MONGO_URI.
+- `touch .env` in the project directory, or manually create `.env` file. There are 2 variable in this in env: SECRET_KEY and MONGO_URI.
 ```
 MONGO_URI='mongodb://localhost:27017/be-popaket-test'
 SECRET_KEY='monkeypopaket-test'
