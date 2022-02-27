@@ -21,6 +21,7 @@ MONGO_URI is the URI for the database (MONGO), SECRET_KET is the session secret 
 - use `nodemon` to get the automatic server reloading
 - `npm run start` or use the custom command based in the script from `package.json`
 - use ***insomnia*** or ***postman*** to send the request
+- go to `localhost:3000` (default url and port) to access the website, and see the available documentation
 
 ## My Default API - Endpoint
 ### Authentication -> METHOD -> Parameter -> Response
