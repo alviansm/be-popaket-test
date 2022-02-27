@@ -3,7 +3,7 @@
 > Author: [alviansm](github.com/alviansm)
 <br>
 Progress
-![](https://us-central1-progress-markdown.cloudfunctions.net/progress/80) 
+- ![](https://us-central1-progress-markdown.cloudfunctions.net/progress/80) 
 
 ## Tech Stack
 - [MongoDB](https://www.mongodb.com/)
